@@ -1,5 +1,7 @@
 part of 'home_bloc.dart';
 
+/// These are the events (as the name may hint at) that can happen on the page.
+/// they are used as triggers to change states
 
 @immutable
 abstract class HomeEvent extends Equatable {
@@ -24,6 +26,6 @@ class LoadedPatientDataEvent extends HomeEvent {
   List<Object?> get props => [data];
 }
 
-class HomePageOpened extends HomeEvent {
-  const HomePageOpened();
+class HomePageInitial extends HomeEvent {
+  const HomePageInitial();
 }

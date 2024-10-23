@@ -1,12 +1,9 @@
 part of 'home_bloc.dart';
 
-enum HomePageStatus {
-  initial,
-  loading,
-  loaded,
-  failed
-}
+enum HomePageStatus { initial, loading, loaded, failed } //
 
+/// The PageState describes what the UI should display based on the current situation
+/// the blocProvider causes a re-draw once these are changed.
 
 @JsonSerializable()
 class HomePageState extends Equatable {
@@ -18,20 +15,13 @@ class HomePageState extends Equatable {
     this.data,
   });
 
-  factory HomePageState.fromJson(Map<String, dynamic> json) =>
-      _$HomePageStateFromJson(json);
-
-  const HomePageState.initial() :
-        this (
-        status: HomePageStatus.initial,
-      );
+  const HomePageState.initial()
+      : this(
+          status: HomePageStatus.initial,
+        );
 
   @override
-  List<Object?> get props =>
-      [
-        status,
-        data
-      ];
+  List<Object?> get props => [status, data];
 
   HomePageState copyWith({
     HomePageStatus? status,
@@ -42,4 +32,9 @@ class HomePageState extends Equatable {
       data: data ?? this.data,
     );
   }
+
+  factory HomePageState.fromJson(Map<String, dynamic> json) =>
+      _$HomePageStateFromJson(json);
+
+  Map<String, dynamic> toJson() => _$HomePageStateToJson(this);
 }

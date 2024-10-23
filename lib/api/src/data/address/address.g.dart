@@ -13,7 +13,7 @@ Address _$AddressFromJson(Map<String, dynamic> json) => Address(
       postalCode: json['postalCode'] as String?,
       use: json['use'] as String?,
       period: (json['period'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, DateTime.parse(e as String)),
+        (k, e) => MapEntry(k, e as String),
       ),
       state: json['state'] as String?,
       district: json['district'] as String?,
@@ -31,6 +31,5 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
       'text': instance.text,
       'district': instance.district,
       'state': instance.state,
-      'period':
-          instance.period?.map((k, e) => MapEntry(k, e.toIso8601String())),
+      'period': instance.period,
     };

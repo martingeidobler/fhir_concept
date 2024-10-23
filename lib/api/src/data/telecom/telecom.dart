@@ -7,12 +7,14 @@ class Telecom{
   final String? value;
   final String? use;
   final int? rank;
+  final Map<String, String>? period;
 
   const Telecom ({
     required this.system,
     required this.value,
     required this.use,
     required this.rank,
+    required this.period,
   });
 
   factory Telecom.fromJson(Map<String, dynamic> json) => _$TelecomFromJson(json);

@@ -22,17 +22,15 @@ class HomeBloc extends HydratedBloc<HomeEvent, HomePageState> {
     on<LoadPatientDataEvent>(_onLoadPatientDataRequested);
   }
 
+  // the listener called when pressing the button
   FutureOr<void> _onLoadPatientDataRequested(
       LoadPatientDataEvent event,
       Emitter<HomePageState> emit
       ) async {
     try {
       emit(state.copyWith(status: HomePageStatus.loading));
-
       final patientData = await patientRepository.getPatientById(id: id);
-
       emit(state.copyWith(status: HomePageStatus.loaded, data: patientData));
-
     } catch (e) {
       emit(state.copyWith(status: HomePageStatus.failed));
       addError(e);
@@ -42,19 +40,10 @@ class HomeBloc extends HydratedBloc<HomeEvent, HomePageState> {
   @override
   String get id => patientId;
 
-
-
-
+  @override
+  HomePageState? fromJson(Map<String, dynamic> json) =>
+      HomePageState.fromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) {
-    // TODO: implement fromJson
-    throw UnimplementedError();
-  }
-
-  @override
-  Map<String, dynamic>? toJson(state) {
-    // TODO: implement toJson
-    throw UnimplementedError();
-  }
+  Map<String, dynamic>? toJson(HomePageState state) => state.toJson();
 }

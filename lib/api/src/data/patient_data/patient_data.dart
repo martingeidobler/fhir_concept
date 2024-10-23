@@ -1,7 +1,8 @@
 import 'package:fhir_concept/api/src/data/address/address.dart';
+import 'package:fhir_concept/api/src/data/contact/contact.dart';
 import 'package:fhir_concept/api/src/data/patient_name/name.dart';
 import 'package:fhir_concept/api/src/data/telecom/telecom.dart';
-import 'package:fhir_concept/api/src/data/enums.dart';
+import 'package:fhir_concept/api/src/data/ressources.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'patient_data.g.dart';
 
@@ -17,6 +18,7 @@ class PatientData {
   final bool? active;
   final bool? deceased;
   final DateTime? deceasedDateTime;
+  // final List<Contact>? contact;
 
   const PatientData ({
     required this.resourceType,
@@ -29,8 +31,10 @@ class PatientData {
     required this.active,
     required this.deceased,
     required this.deceasedDateTime,
+    // required this.contact,
   });
 
   factory PatientData.fromJson(Map<String, dynamic> json) => _$PatientDataFromJson(json);
   Map<String, dynamic> toJson() => _$PatientDataToJson(this);
+
 }

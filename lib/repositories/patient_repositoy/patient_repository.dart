@@ -17,7 +17,14 @@ class PatientRepository {
       return await fhirApiClient.getPatientData(id: id);
     } catch (e) {
       throw GetPatientByIdFailure(e);
+      print(e.toString());
     }
   }
+
+  /* Implement further requests to call the API client*/
+
+  // search by id
+  // search by name
+  // create new patient
 
 }

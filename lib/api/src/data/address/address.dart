@@ -12,7 +12,7 @@ class Address {
   final String? text;
   final String? district;
   final String? state;
-  final Map<String, DateTime>? period;
+  final Map<String, String>? period;
 
   const Address({
     required this.city,

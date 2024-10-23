@@ -11,13 +11,13 @@ class PatientRepository {
   });
 
   Future<PatientData> getPatientById({
-    required String id
+    required String patId
   }) async {
     try {
-      return await fhirApiClient.getPatientData(id: id);
+      return await fhirApiClient.getPatientData(patId: patId);
     } catch (e) {
-      throw GetPatientByIdFailure(e);
       print(e.toString());
+      throw GetPatientByIdFailure(e);
     }
   }
 

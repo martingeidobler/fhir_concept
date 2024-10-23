@@ -8,28 +8,28 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'home_events.dart';
+
 part 'home_states.dart';
+
 part 'home_bloc.g.dart';
 
 class HomeBloc extends HydratedBloc<HomeEvent, HomePageState> {
   final PatientRepository patientRepository;
-  final String patientId;
 
   HomeBloc({
     required this.patientRepository,
-    required this.patientId,
   }) : super(const HomePageState.initial()) {
     on<LoadPatientDataEvent>(_onLoadPatientDataRequested);
+    on<ErrorOkClick>(_onErrorOkClick);
   }
 
   // the listener called when pressing the button
   FutureOr<void> _onLoadPatientDataRequested(
-      LoadPatientDataEvent event,
-      Emitter<HomePageState> emit
-      ) async {
+      LoadPatientDataEvent event, Emitter<HomePageState> emit) async {
     try {
       emit(state.copyWith(status: HomePageStatus.loading));
-      final patientData = await patientRepository.getPatientById(id: id);
+      final patientData =
+          await patientRepository.getPatientById(patId: event.patID);
       emit(state.copyWith(status: HomePageStatus.loaded, data: patientData));
     } catch (e) {
       emit(state.copyWith(status: HomePageStatus.failed));
@@ -37,9 +37,12 @@ class HomeBloc extends HydratedBloc<HomeEvent, HomePageState> {
     }
   }
 
-  @override
-  String get id => patientId;
+  FutureOr<void> _onErrorOkClick(
+      ErrorOkClick event, Emitter<HomePageState> emit) async {
+    emit(state.copyWith(status: HomePageStatus.initial));
+  }
 
+  @override
   @override
   HomePageState? fromJson(Map<String, dynamic> json) =>
       HomePageState.fromJson(json);

@@ -3,18 +3,21 @@ import 'package:flutter/cupertino.dart';
 class RowItem extends StatelessWidget {
   final String itemDescriptor;
   final String itemName;
-  double? indent;
+  final double? indent;
 
-  RowItem(
+  const RowItem(
       {super.key,
       required this.itemDescriptor,
-      required this.itemName, this.indent});
+      required this.itemName,
+      this.indent});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(width: indent,),
+        SizedBox(
+          width: indent,
+        ),
         SizedBox(
           width: 80,
           child: Text(
@@ -22,7 +25,7 @@ class RowItem extends StatelessWidget {
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        Text(itemName),
+        Flexible(child: Text(itemName)),
       ],
     );
   }

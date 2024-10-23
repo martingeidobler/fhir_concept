@@ -12,8 +12,12 @@ abstract class HomeEvent extends Equatable {
 }
 
 class LoadPatientDataEvent extends HomeEvent {
-  const LoadPatientDataEvent();
+  final String patID;
+
+  const LoadPatientDataEvent(this.patID);
 }
+
+class ErrorOkClick extends HomeEvent {}
 
 class LoadedPatientDataEvent extends HomeEvent {
   final PatientData data;

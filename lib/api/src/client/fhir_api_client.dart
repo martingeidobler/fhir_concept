@@ -54,9 +54,9 @@ class FhirApiClient {
         _httpClient = httpClient ?? http.Client();
 
   Future<PatientData> getPatientData({
-    required String id,
+    required String patId,
   }) async {
-    final uri = Uri.parse('$_baseUrl/Patient/$id');
+    final uri = Uri.parse('$_baseUrl/Patient/$patId');
 
     http.Response? response = await _httpClient.get(uri);
 

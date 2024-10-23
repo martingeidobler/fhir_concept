@@ -18,7 +18,7 @@ class App extends StatelessWidget {
         providers: [
           BlocProvider<HomeBloc>(
             create: (BuildContext context) =>
-                HomeBloc(patientRepository: patientRepository, patientId: "1"),
+                HomeBloc(patientRepository: patientRepository),
           )
         ],
         child: const MaterialApp(

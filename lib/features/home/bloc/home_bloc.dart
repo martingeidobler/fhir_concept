@@ -21,6 +21,7 @@ class HomeBloc extends HydratedBloc<HomeEvent, HomePageState> {
   }) : super(const HomePageState.initial()) {
     on<LoadPatientDataEvent>(_onLoadPatientDataRequested);
     on<ErrorOkClick>(_onErrorOkClick);
+    on<ResetHomePage>(_onResetHomePageClick);
   }
 
   // the listener called when pressing the button
@@ -40,6 +41,11 @@ class HomeBloc extends HydratedBloc<HomeEvent, HomePageState> {
   FutureOr<void> _onErrorOkClick(
       ErrorOkClick event, Emitter<HomePageState> emit) async {
     emit(state.copyWith(status: HomePageStatus.initial));
+  }
+
+  FutureOr<void> _onResetHomePageClick(ResetHomePage event, Emitter<HomePageState> emit){
+    emit(state.copyWith(status: HomePageStatus.initial));
+
   }
 
   @override

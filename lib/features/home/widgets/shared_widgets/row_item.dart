@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+// One place to change the way all DataRows look. Cleaner and easier to do changes
 class RowItem extends StatelessWidget {
   final String itemDescriptor;
   final String itemName;

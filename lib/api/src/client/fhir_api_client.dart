@@ -24,6 +24,9 @@ class FhirApiClient {
   final String _baseUrl;
   final http.Client _httpClient;
 
+  // The different Clients, based on what I am building for:
+
+  //1. For the final app, where I have a online-endpoint
   FhirApiClient({
     http.Client? httpClient,
   }) : this._(
@@ -31,6 +34,7 @@ class FhirApiClient {
           httpClient: httpClient,
         );
 
+  //2. For physical installations, where the endpoint is hosted on the device
   FhirApiClient.localHost({
     http.Client? httpClient,
   }) : this._(
@@ -38,8 +42,8 @@ class FhirApiClient {
           httpClient: httpClient,
         );
 
-  /* If the address is set to //localcost: the emulator cannot access it, as
-  *  the endpoint will not be on the phones localhost but connected on the machine */
+  //3. For emulators, where localhost: would point towards the emulator, this is the
+  //   IP address under which the emulator can reach the PC-hosted endpoint
   FhirApiClient.emulator({
     http.Client? httpClient,
   }) : this._(

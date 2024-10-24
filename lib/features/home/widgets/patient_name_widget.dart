@@ -1,6 +1,7 @@
 import 'package:fhir_concept/api/src/data/patient_name/name.dart';
 import 'package:fhir_concept/features/home/helpers.dart';
-import 'package:fhir_concept/features/home/widgets/row_item.dart';
+import 'package:fhir_concept/features/home/widgets/shared_widgets/data_block.dart';
+import 'package:fhir_concept/features/home/widgets/shared_widgets/row_item.dart';
 import 'package:flutter/cupertino.dart';
 
 class PatientNameWidget extends StatelessWidget {
@@ -12,7 +13,6 @@ class PatientNameWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> widgetList = [];
     int nameCount = 1;
-    widgetList.add(const Text("Name(s):"));
     for (Name name in nameList) {
       if (nameList.length > 1) {
         widgetList.add(Text('$nameCount:'));
@@ -72,17 +72,11 @@ class PatientNameWidget extends StatelessWidget {
           indent: 8,
         ));
       }
-      widgetList.add(const SizedBox(
-        height: 4,
-      ));
     }
-    widgetList.add(const SizedBox(
-      height: 4,
-    ));
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: widgetList,
+    return DataBlock(
+      items: widgetList,
+      title: "Name(s):",
     );
   }
 }

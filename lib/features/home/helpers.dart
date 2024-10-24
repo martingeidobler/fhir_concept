@@ -1,6 +1,6 @@
-abstract class Helpers {
 
-  /// used in multiple spots.
+// For code being used in different spots
+abstract class Helpers {
   static String periodHelper(Map<String, String> period){
     String? start = period['start'];
     String? end = period['end'];

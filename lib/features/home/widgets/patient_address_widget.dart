@@ -1,7 +1,8 @@
 import 'package:fhir_concept/api/src/data/address/address.dart';
 import 'package:fhir_concept/api/src/data/telecom/telecom.dart';
 import 'package:fhir_concept/features/home/helpers.dart';
-import 'package:fhir_concept/features/home/widgets/row_item.dart';
+import 'package:fhir_concept/features/home/widgets/shared_widgets/data_block.dart';
+import 'package:fhir_concept/features/home/widgets/shared_widgets/row_item.dart';
 import 'package:flutter/cupertino.dart';
 
 class PatientAddressWidget extends StatelessWidget {
@@ -13,7 +14,6 @@ class PatientAddressWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> widgetList = [];
     int addressCount = 1;
-    widgetList.add(const Text("Address(es):"));
     for (Address address in addressList) {
       if (addressList.length > 1) {
         widgetList.add(Text('$addressCount:'));
@@ -95,18 +95,10 @@ class PatientAddressWidget extends StatelessWidget {
           indent: 8,
         ));
       }
-
-      widgetList.add(const SizedBox(
-        height: 4,
-      ));
     }
-    widgetList.add(const SizedBox(
-      height: 4,
-    ));
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: widgetList,
+    return DataBlock(
+      items: widgetList,
+      title: "Address(es):",
     );
   }
 }

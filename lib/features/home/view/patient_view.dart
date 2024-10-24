@@ -71,19 +71,18 @@ class _PatientViewState extends State<PatientView> {
     } else if (status == HomePageStatus.loading) {
       return const CircularProgressIndicator();
     } else if (status == HomePageStatus.loaded && data != null) {
-      return PatientDataWidget(data: data);
+      return PatientDataWidget(data: data, resetButton: getResetButton(bloc));
     } else {
       return const Text('illegal state');
     }
   }
 
-  Widget patientDetails(PatientData data) {
-    List<Widget> patientDataWidgetList = [];
-
-    patientDataWidgetList.add(PatientDataWidget(data: data));
-
-    return Column(
-      children: patientDataWidgetList,
+  ElevatedButton getResetButton(HomeBloc bloc) {
+    return ElevatedButton(
+      onPressed: () {
+        bloc.add(const ResetHomePage());
+      },
+      child: const Text("Reset Home Page"),
     );
   }
 }

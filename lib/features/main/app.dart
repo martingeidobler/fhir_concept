@@ -4,6 +4,9 @@ import 'package:fhir_concept/repositories/patient_repositoy/patient_repository.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+/// This is the entry-point of the Flutter-UI and is called by the main.
+/// Theme-Data etc. would be configured here
+
 class App extends StatelessWidget {
   final PatientRepository patientRepository;
 

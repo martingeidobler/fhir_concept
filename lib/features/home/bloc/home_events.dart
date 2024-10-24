@@ -33,3 +33,10 @@ class LoadedPatientDataEvent extends HomeEvent {
 class HomePageInitial extends HomeEvent {
   const HomePageInitial();
 }
+
+class ResetHomePage extends HomeEvent {
+  const ResetHomePage();
+
+  @override
+  List<Object?> get props => [];
+}
